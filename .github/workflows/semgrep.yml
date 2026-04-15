@@ -10,15 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clonar el código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Instalar Semgrep
         run: pip install semgrep
-      - name: Ejecutar análisis con reglas personalizadas
-        run: semgrep --config=semgrep-rules.yaml --json --output=semgrep-results.json
+      - name: Executar análise con regras automáticas
+        run: semgrep --config=auto . --output=semgrep-results.json
+      # - name: Ejecutar análisis con reglas personalizadas
+      #   run: semgrep --config=semgrep-rules.yaml --json --output=semgrep-results.json
       - name: Mostrar resultados en la salida de GitHub Actions
         run: cat semgrep-results.json
       - name: Guardar reporte de Semgrep como artefacto
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: semgrep-report
           path: semgrep-results.json
