@@ -19,14 +19,13 @@ jobs:
       - name: Instalar Semgrep
         run: pip install semgrep
       - name: Executar análise con regras automáticas
-        # run: semgrep --config=auto . --output=semgrep-results.json
-        run: semgrep --config=auto .
+        run: semgrep --config=auto . --output=semgrep-results.json
       # - name: Executar análisis con reglas personalizadas
       #   run: semgrep --config=semgrep-rules.yaml --json --output=semgrep-results.json
-      # - name: Mostrar resultados na saída de GitHub Actions
-      #   run: cat semgrep-results.json
-      # - name: Gardar informe de Semgrep como artefacto
-      #   uses: actions/upload-artifact@v6
-      #   with:
-      #     name: semgrep-report
-      #     path: semgrep-results.json
+      - name: Mostrar resultados na saída de GitHub Actions
+        run: cat semgrep-results.json
+      - name: Gardar informe de Semgrep como artefacto
+        uses: actions/upload-artifact@v6
+        with:
+          name: semgrep-report
+          path: semgrep-results.json
