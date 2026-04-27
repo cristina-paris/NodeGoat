@@ -25,7 +25,7 @@ jobs:
       - name: Mostrar resultados na saída de GitHub Actions
         run: cat semgrep-results.json
       - name: Gardar informe de Semgrep como artefacto
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: semgrep-report
           path: semgrep-results.json
